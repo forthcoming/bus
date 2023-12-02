@@ -3,6 +3,11 @@ label author="zgt" mail="212956978@qq.com"
 run apt update && apt install -y iputils-ping vim git curl make gcc supervisor mysql-server
 env ROOTPATH=/root
 workdir $ROOTPATH
+run ["/bin/bash", "-c", "mkdir -p data/{mysql,redis_cluster,redis}"]
+
+### 配置vim ###
+run echo 'set encoding=utf-8' >> /etc/vim/vimrc
+run echo 'set nu' >> /etc/vim/vimrc
 
 ### 安装miniconda ###
 run curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
@@ -46,5 +51,3 @@ copy cnf/mysql/mysqld_replica.cnf $ROOTPATH/mysql_master_replica/replica/mysqld.
 
 ### 配置supervisor ###
 copy cnf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
-
-# cmd ["supervisord" "-c" "/etc/supervisor/supervisord.conf"]

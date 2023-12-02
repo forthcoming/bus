@@ -1,0 +1,23 @@
+services:
+  bus:
+    build: .
+    image: bus
+    container_name: bus_container
+    volumes:
+      - ./data/mysql:/root/data/mysql
+      - ./data/redis_cluster:/root/data/redis_cluster
+      - ./data/redis:/root/data/redis
+    ports:
+      - "3306:3306"   # mysql
+      - "7000:7000"
+      - "7001:7001"
+      - "7002:7002"
+      - "7003:7003"
+      - "7004:7004"
+      - "7005:7005"
+      - "6379:6379"   # redis
+    command:
+      - supervisord
+      - -c
+      - /etc/supervisor/supervisord.conf
+
