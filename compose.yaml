@@ -18,6 +18,5 @@ services:
       - "6379:6379"   # redis
     command:
       - supervisord
-      - -c
-      - /etc/supervisor/supervisord.conf
+
 

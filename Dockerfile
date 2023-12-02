@@ -1,5 +1,6 @@
 FROM ubuntu:latest
 LABEL author="zgt" mail="212956978@qq.com"
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y iputils-ping vim git curl make gcc supervisor mysql-server
 ENV ROOTPATH=/root
 WORKDIR $ROOTPATH
@@ -48,10 +49,6 @@ RUN ["/bin/bash", "-c", "mkdir -p mysql_master_replica/{master,replica}"]
 COPY cnf/mysql/mysqld_master.cnf $ROOTPATH/mysql_master_replica/master/mysqld.cnf
 COPY cnf/mysql/mysqld_replica.cnf $ROOTPATH/mysql_master_replica/replica/mysqld.cnf
 
-
-### 配置supervisor ###
+### 配置supervisor(supervisord须以前台进程运行) ###
 COPY cnf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
-RUN echo 'supervisord -c /etc/supervisor/supervisord.conf' > start.sh
-RUN echo 'supervisorctl -c /etc/supervisor/supervisord.conf' >> start.sh
-
-CMD ["python"]
+CMD ["supervisord","-c","/etc/supervisor/supervisord.conf"]
