@@ -54,4 +54,4 @@ COPY cnf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 RUN echo 'supervisord -c /etc/supervisor/supervisord.conf' > start.sh
 RUN echo 'supervisorctl -c /etc/supervisor/supervisord.conf' >> start.sh
 
-CMD ['python']
+CMD ["python"]
