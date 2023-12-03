@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV ROOTPATH=/root
 WORKDIR $ROOTPATH
 RUN apt update && apt install -y iputils-ping vim git curl make gcc supervisor mysql-server
+RUN ["/bin/bash", "-c", "mkdir -p data/{mysql,redis_cluster/{7000,7001,7002,7003,7004,7005},redis}"]
 
 ### 配置vim ###
 RUN echo 'set encoding=utf-8' >> /etc/vim/vimrc
@@ -48,8 +49,6 @@ RUN $ROOTPATH/redis/bin/redis-server $ROOTPATH/redis_cluster/7000/redis.conf;\
 RUN ["/bin/bash", "-c", "mkdir -p mysql_master_replica/{master,replica}"]
 COPY cnf/mysql/mysqld_master.cnf $ROOTPATH/mysql_master_replica/master/mysqld.cnf
 COPY cnf/mysql/mysqld_replica.cnf $ROOTPATH/mysql_master_replica/replica/mysqld.cnf
-
-RUN ["/bin/bash", "-c", "mkdir -p data/{mysql,redis_cluster/{7000,7001,7002,7003,7004,7005},redis}"]
 
 ### 配置supervisor(supervisord须以前台进程运行) ###
 COPY cnf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
