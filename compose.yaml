@@ -4,7 +4,7 @@ services:
     image: bus
     container_name: bus_container
     volumes:
-      - ./data/mysql:/root/data/mysql
+      - ./data/mysql:/var/lib/mysql
       - ./data/redis_cluster/7000:/root/data/redis_cluster/7000
       - ./data/redis_cluster/7001:/root/data/redis_cluster/7001
       - ./data/redis_cluster/7002:/root/data/redis_cluster/7002

@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV ROOTPATH=/root
 WORKDIR $ROOTPATH
 RUN apt update && apt install -y iputils-ping vim git curl make gcc supervisor mysql-server
-RUN ["/bin/bash", "-c", "mkdir -p data/{mysql,redis_cluster/{7000,7001,7002,7003,7004,7005},redis}"]
+RUN ["/bin/bash", "-c", "mkdir -p data/{redis_cluster/{7000,7001,7002,7003,7004,7005},redis}"]
 
 ### 配置vim ###
 RUN echo 'set encoding=utf-8' >> /etc/vim/vimrc
@@ -44,6 +44,10 @@ RUN $ROOTPATH/redis/bin/redis-server $ROOTPATH/redis_cluster/7000/redis.conf;\
     $ROOTPATH/redis/bin/redis-server $ROOTPATH/redis_cluster/7004/redis.conf;\
     $ROOTPATH/redis/bin/redis-server $ROOTPATH/redis_cluster/7005/redis.conf;\
     $ROOTPATH/redis/bin/redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1 --cluster-yes
+
+### 部署mysql ###
+RUN ["/bin/bash", "-c", "mkdir mysql"]
+COPY cnf/mysql/mysqld.cnf $ROOTPATH/mysql/mysqld.cnf
 
 ### 部署mysql主从 ###
 RUN ["/bin/bash", "-c", "mkdir -p mysql_master_replica/{master,replica}"]
