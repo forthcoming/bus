@@ -1,10 +1,9 @@
 FROM ubuntu:latest
 LABEL author="zgt" mail="212956978@qq.com"
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt update && apt install -y iputils-ping vim git curl make gcc supervisor mysql-server
 ENV ROOTPATH=/root
 WORKDIR $ROOTPATH
-RUN ["/bin/bash", "-c", "mkdir -p data/{mysql,redis_cluster,redis}"]
+RUN apt update && apt install -y iputils-ping vim git curl make gcc supervisor mysql-server
 
 ### 配置vim ###
 RUN echo 'set encoding=utf-8' >> /etc/vim/vimrc
@@ -21,7 +20,8 @@ RUN echo 'export PATH=$CONDA:$PATH' >> ~/.bashrc
 ### 安装redis ###
 RUN curl https://download.redis.io/redis-stable.tar.gz -o redis-stable.tar.gz
 RUN tar xzf redis-stable.tar.gz
-RUN cd redis-stable && make PREFIX=$ROOTPATH/redis install && mv redis.conf $ROOTPATH/redis
+RUN cd redis-stable && make PREFIX=$ROOTPATH/redis install
+COPY cnf/redis/redis.conf $ROOTPATH/redis/redis.conf
 RUN rm -rf redis-stable redis-stable.tar.gz
 RUN echo REDIS=$ROOTPATH/redis/bin/ >> ~/.bashrc
 RUN echo 'export PATH=$REDIS:$PATH' >> ~/.bashrc
@@ -49,6 +49,9 @@ RUN ["/bin/bash", "-c", "mkdir -p mysql_master_replica/{master,replica}"]
 COPY cnf/mysql/mysqld_master.cnf $ROOTPATH/mysql_master_replica/master/mysqld.cnf
 COPY cnf/mysql/mysqld_replica.cnf $ROOTPATH/mysql_master_replica/replica/mysqld.cnf
 
+RUN ["/bin/bash", "-c", "mkdir -p data/{mysql,redis_cluster/{7000,7001,7002,7003,7004,7005},redis}"]
+
 ### 配置supervisor(supervisord须以前台进程运行) ###
 COPY cnf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 CMD ["supervisord","-c","/etc/supervisor/supervisord.conf"]
+
