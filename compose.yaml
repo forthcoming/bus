@@ -21,6 +21,7 @@ services:
       - "7004:7004"
       - "7005:7005"
       - "6379:6379"   # redis
+      - "80:80"
 #    command:
 #      - supervisord
 
