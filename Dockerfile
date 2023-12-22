@@ -3,8 +3,8 @@ LABEL author="zgt" mail="212956978@qq.com"
 ENV DEBIAN_FRONTEND=noninteractive
 ENV ROOTPATH=/root
 WORKDIR $ROOTPATH
-RUN apt -o Acquire::Check-Date=false update;\
-    apt install -y --no-install-recommends iputils-ping vim git curl make gcc supervisor nginx;\
+RUN apt update;\
+    apt install -y iputils-ping vim git curl make gcc supervisor nginx;\
     rm -rf /var/lib/apt/lists/*
 RUN ["/bin/bash", "-c", "mkdir -p data/{redis_cluster/{7000,7001,7002,7003,7004,7005},redis}"]
 
