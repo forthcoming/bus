@@ -1,3 +1,4 @@
+set -ex   # e: 若指令传回值不等于0,则立即退出shell; x:执行指令后,会先显示该指令及所下的参数
 supervisord -c /etc/supervisor/supervisord.conf
 while true
 do
