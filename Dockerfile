@@ -13,21 +13,22 @@ RUN echo 'set encoding=utf-8' >> /etc/vim/vimrc
 RUN echo 'set nu' >> /etc/vim/vimrc
 
 ### 安装miniconda ###
-RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
-RUN bash miniconda.sh -b -u -p miniconda3
-RUN rm -rf miniconda.sh
-RUN miniconda3/bin/conda init bash
-RUN echo CONDA=$ROOTPATH/miniconda3/bin/ >> ~/.bashrc
-RUN echo 'export PATH=$CONDA:$PATH' >> ~/.bashrc
+RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh;\
+    bash miniconda.sh -b -u -p miniconda3;\
+    rm -rf miniconda.sh;\
+    miniconda3/bin/conda init bash;\
+    echo CONDA=$ROOTPATH/miniconda3/bin/ >> ~/.bashrc;\
+    echo 'export PATH=$CONDA:$PATH' >> ~/.bashrc
 
 ### 安装redis ###
-RUN curl https://download.redis.io/redis-stable.tar.gz -o redis-stable.tar.gz
-RUN tar xzf redis-stable.tar.gz
-RUN cd redis-stable && make PREFIX=$ROOTPATH/redis install
+RUN curl https://download.redis.io/redis-stable.tar.gz -o redis-stable.tar.gz;\
+    tar xzf redis-stable.tar.gz;\
+    cd redis-stable;\
+    make PREFIX=$ROOTPATH/redis install;\
+    rm -rf redis-stable redis-stable.tar.gz;\
+    echo REDIS=$ROOTPATH/redis/bin/ >> ~/.bashrc;\
+    echo 'export PATH=$REDIS:$PATH' >> ~/.bashrc
 COPY cnf/redis/redis.conf $ROOTPATH/redis/redis.conf
-RUN rm -rf redis-stable redis-stable.tar.gz
-RUN echo REDIS=$ROOTPATH/redis/bin/ >> ~/.bashrc
-RUN echo 'export PATH=$REDIS:$PATH' >> ~/.bashrc
 
 ### 部署redis集群 ###
 RUN ["/bin/bash", "-c", "mkdir -p redis_cluster/{7000,7001,7002,7003,7004,7005}"]

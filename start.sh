@@ -2,7 +2,7 @@ set -ex   # e: 若指令传回值不等于0,则立即退出shell(默认继续执
 supervisord -c /etc/supervisor/supervisord.conf
 while true
 do
-    sleep .5
+    sleep 2 #  保证supervisord启动完成
     process_num=$(supervisorctl status rc: | grep -c RUNNING)
     if [ "$process_num" != 6 ];
     then
