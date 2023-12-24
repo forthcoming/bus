@@ -11,5 +11,5 @@ curl -fsSL https://get.docker.com | sh # 安装docker
 ### 启动(compose.yaml目录下执行)
 
 ```shell
-docker compose up 
+docker compose up -d
 ```
