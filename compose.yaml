@@ -1,8 +1,8 @@
 services:
-  bus:
+  main:
     build: .
     image: bus
-    container_name: bus_container
+    container_name: main
     volumes:
       - ./data/redis_cluster/7000:/root/data/redis_cluster/7000
       - ./data/redis_cluster/7001:/root/data/redis_cluster/7001
@@ -20,7 +20,21 @@ services:
       - "7005:7005"
       - "6379:6379"   # redis
       - "80:80"
+    networks:
+      - bus_net
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - bus_net
+networks:
+  bus_net:
+    driver: bridge  # 默认就是bridge
 #    command:
 #      - supervisord
-
-
