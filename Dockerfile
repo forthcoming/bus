@@ -41,6 +41,10 @@ RUN sed 's/PORT_NUMBER/7000/g' $ROOTPATH/redis_cluster/redis.conf >> $ROOTPATH/r
     sed 's/PORT_NUMBER/7005/g' $ROOTPATH/redis_cluster/redis.conf >> $ROOTPATH/redis_cluster/7005/redis.conf;\
     rm -rf $ROOTPATH/redis_cluster/redis.conf
 
+### 配置nginx ###
+RUN openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/nginx/nginx.key -out /etc/nginx/nginx.crt -subj "/CN=my-nginx/O=my-nginx"
+COPY cnf/nginx/nginx.conf /etc/nginx/nginx.conf
+
 ### 启动服务 ###
 COPY cnf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 COPY start.sh start.sh
