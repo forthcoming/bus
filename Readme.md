@@ -26,7 +26,7 @@ docker compose up -d  # compose.yaml目录下执行
 ### 数据库连接
 
 ```shell
-mongo -uroot -proot
+mongo -uroot -proot  # mongodb://root:root@localhost:27017 
 redis-cli
 redis-cli -c -p 7000
 mysql -h127.0.0.1 -uroot -proot
