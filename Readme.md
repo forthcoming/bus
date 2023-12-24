@@ -1,6 +1,6 @@
 ### 功能
 
-**一键部署redis单节点,redis集群,mysql单节点,nginx,miniconda,git等工作环境**
+**一键部署mongo,redis单节点,redis集群,mysql单节点,nginx,miniconda,git等工作环境**
 
 ### 环境
 

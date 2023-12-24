@@ -34,8 +34,22 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     networks:
       - bus_net
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    volumes:
+      - ./data/mongo:/data/db
+      - ./cnf/mongo:/etc/mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    networks:
+      - bus_net
+    command: mongod -f /etc/mongo/mongod.conf
+
 networks:
   bus_net:
     driver: bridge  # 默认就是bridge
-#    command:
-#      - supervisord
+
