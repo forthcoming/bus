@@ -25,7 +25,7 @@ RUN curl https://download.redis.io/redis-stable.tar.gz -o redis-stable.tar.gz;\
     tar xzf redis-stable.tar.gz;\
     cd redis-stable;\
     make PREFIX=$ROOTPATH/redis install;\
-    rm -rf redis-stable redis-stable.tar.gz;\
+    rm -rf ../redis-stable*;\
     echo REDIS=$ROOTPATH/redis/bin/ >> ~/.bashrc;\
     echo 'export PATH=$REDIS:$PATH' >> ~/.bashrc
 COPY cnf/redis/redis.conf $ROOTPATH/redis/redis.conf
