@@ -9,8 +9,8 @@ RUN apt update;\
 RUN ["/bin/bash", "-c", "mkdir -p data/{redis_cluster/{7000,7001,7002,7003,7004,7005},redis}"]
 
 ### 配置vim ###
-RUN echo 'set encoding=utf-8' >> /etc/vim/vimrc
-RUN echo 'set nu' >> /etc/vim/vimrc
+RUN echo 'set encoding=utf-8' >> /etc/vim/vimrc;\
+    echo 'set nu' >> /etc/vim/vimrc
 
 ### 安装miniconda ###
 RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh;\
