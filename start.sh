@@ -1,8 +1,8 @@
-set -ex   # e: 若指令传回值不等于0,则立即退出shell(默认继续执行后面命令); x:执行指令后,会先显示该指令及所下的参数
+set -x
 supervisord -c /etc/supervisor/supervisord.conf
 while true
 do
-    sleep 2 #  保证supervisord启动完成
+    sleep .5 #  保证supervisord启动完成
     process_num=$(supervisorctl status rc: | grep -c RUNNING)
     if [ "$process_num" != 6 ];
     then
@@ -11,7 +11,7 @@ do
     then
         echo 'redis cluster is complete'
         break
-    else
+    else  # 已经初始化过集群,但刚启动还未加载好时,状态未fail,再执行一遍create也没事
         /root/redis/bin/redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 --cluster-replicas 1 --cluster-yes
     fi
 done
