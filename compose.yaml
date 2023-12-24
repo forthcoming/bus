@@ -27,7 +27,7 @@ services:
     container_name: mysql
     volumes:
       - ./data/mysql:/var/lib/mysql
-      - ./cnf/mysql:/etc/mysql/conf.d
+      - ./cnf/mysql:/etc/mysql/conf.d  # mysql使用/etc/mysql/my.cnf和/etc/mysql/conf.d/*中的组合启动设置,后者优先级更高
     ports:
       - "3306:3306"
     environment:
