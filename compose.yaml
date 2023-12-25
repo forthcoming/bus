@@ -1,7 +1,7 @@
 services:
   main:
-    build: .
-    image: bus
+    build: .  # 从当前目录名为Dockerfile的文件构建镜像,没有则忽略
+    image: bus  # 构建的镜像名
     container_name: main
     volumes:
       - ./data/redis_cluster/7000:/root/data/redis_cluster/7000
@@ -12,7 +12,7 @@ services:
       - ./data/redis_cluster/7005:/root/data/redis_cluster/7005
       - ./data/redis:/root/data/redis
     ports:
-      - "7000:7000"
+      - "7000:7000"  # HOST:CONTAINER应始终指定为带引号的字符串,以避免与yaml base-60 float发生冲突
       - "7001:7001"
       - "7002:7002"
       - "7003:7003"
@@ -22,6 +22,8 @@ services:
       - "80:80"
     networks:
       - bus_net
+#    depends_on: # 只能保证容器启动和销毁顺序,不能确保依赖的容器是否ready
+#      - mysql
   mysql:
     image: mysql:latest
     container_name: mysql
