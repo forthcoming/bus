@@ -52,14 +52,12 @@ CMD ["/bin/bash","start.sh"]
 
 
 # FROM: 指定基础镜像,Dockerfile必须以FROM指令开头
-# LABEL: 将元数据添加到镜像中,通过docker image inspect查看,可以在一行上指定多个标签
+# LABEL: 将元数据添加到镜像中,通过docker inspect查看,可以在一行上指定多个标签
 # RUN: 默认/bin/sh -c on Linux or cmd /S /C on Windows,使用如RUN ["/bin/bash", "-c", "echo hello"]更改shell类型
 # WORKDIR: 为RUN、CMD、ENTRYPOINT、COPY和ADD指令设置工作目录
 # COPY: 复制宿主机文件到容器中
-# VOLUME: 创建一个具有指定名称的装载点,自动与本机某个目录管理,可通过docker image inspect查看
+# VOLUME: 创建一个具有指定名称的装载点,自动与本机某个目录关联,可通过docker inspect查看
 # CMD: 镜像启动时运行的命令,一个Dockerfile只能有一条CMD指令,如果用户指定了镜像运行的参数,则会覆盖CMD指令(ENTRYPOINT不会被覆盖),只有运行前台程序容器才不会退出
-# ENV: 将环境变量＜key＞设置为＜value＞,该值将在构建阶段的所有后续指令的环境中,并且可以在许多指令中内联替换
-# ARG创建的变量只在镜像构建过程中可见,ENV创建的变量不仅能在构建镜像的过程中使用,在容器运行时也能够以环境变量的形式被应用程序使用
+# ENV: 将环境变量＜key＞设置为＜value＞,该变量可在所有后续指令中使用,容器运行时也能够以环境变量的形式被使用,ARG创建的变量只在镜像构建过程中可见
 # 以#开头的行视为注释,除非该行是有效的解析器指令,行中其他任何位置的#标记都被视为参数
-# Dockerfile指令按照从上到下顺序执行,每条指令都会创建一个新的镜像层并对镜像进行提交
-# Dockerfile每层之间相互独立,cd只在所在的层生效
+# Dockerfile指令按从上到下顺序执行,每条指令都会创建一个新的镜像层并对镜像进行提交,每层之间相互独立,cd只在所在层生效
