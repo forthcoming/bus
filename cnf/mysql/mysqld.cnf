@@ -6,16 +6,16 @@ log_error = /var/lib/mysql/error.log
 pid-file = /var/run/mysqld/mysqld.pid
 socket = /var/run/mysqld/mysqld.sock
 port = 3306
-server-id = 1                                        # 主从复制模式下该id必须唯一
+server-id = 1                                  # 主从复制模式下该id必须唯一
 
-long_query_time = 1                                   # 查询时间超过1秒则认为是慢查询,锁等待时间不算在内,在语句执行完后记录耗时
-slow_query_log = on                                   # 是否开启慢日志
-log_queries_not_using_indexes = on                    # 未使用索引的查询也被记录到慢查询日志中
-slow_query_log_file = /var/lib/mysql/slow.log   # 慢日志存储路径
+long_query_time = 1                            # 查询时间超过1秒则认为是慢查询,锁等待时间不算在内,在语句执行完后记录耗时
+slow_query_log = on                            # 是否开启慢日志
+log_queries_not_using_indexes = on             # 未使用索引的查询也被记录到慢查询日志中
+slow_query_log_file = /var/lib/mysql/slow.log  # 慢日志存储路径
 
-log_bin = /var/lib/mysql/bin.log                # binlog日志名前缀
-binlog_expire_logs_seconds = 604800                   # 删除超过7天的binlog日志
-# relay_log = /var/lib/mysql/relay-bin.log            # 主从模式下从服务器设置
+log_bin = /var/lib/mysql/bin.log
+binlog_expire_logs_seconds = 604800            # 删除超过7天的binlog日志
+# relay_log = /var/lib/mysql/relay-bin.log     # 主从模式下从服务器设置
 
 
 #### common settings ####
