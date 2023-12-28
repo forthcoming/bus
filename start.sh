@@ -2,12 +2,12 @@ set -x
 supervisord -c /etc/supervisor/supervisord.conf
 while true
 do
-    sleep .5 #  保证supervisord启动完成
+    sleep .5  # 保证supervisord启动完成
     process_num=$(supervisorctl status rc: | grep -c RUNNING)
-    if [ "$process_num" != 6 ];
+    if [ "$process_num" != 6 ]
     then
         echo 'wait redis cluster start'
-    elif /root/redis/bin/redis-cli -c -p 7000 cluster info | grep cluster_state | grep -q ok;
+    elif /root/redis/bin/redis-cli -c -p 7000 cluster info | grep cluster_state | grep -q ok  # -q:静默输出,$?代表上一条命令执行是否成功,0成功非0失败
     then
         echo 'redis cluster is complete'
         break
