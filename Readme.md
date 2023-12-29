@@ -37,4 +37,6 @@ import requests
 
 r = requests.get('https://google.com', proxies={"https": "127.0.0.1:3456"})
 print(r.text)
+
+# 浏览器设置好代理即可访问外网
 ```
