@@ -11,6 +11,7 @@
 * `git`
 * `supervisor`
 * `clash`
+* `tor`
 
 ### 所需环境
 
@@ -33,10 +34,14 @@ redis-cli -c -p 7000
 mysql -h127.0.0.1 -uroot -proot
 ```
 ```python
+# 浏览器设置好代理即可访问外网
 import requests
 
+# 测试clash
 r = requests.get('https://google.com', proxies={"https": "127.0.0.1:3456"})
 print(r.text)
 
-# 浏览器设置好代理即可访问外网
+# 测试tor
+r = requests.get('https://google.com', proxies={'https': 'socks5://127.0.0.1:9050'})
+print(r.text)
 ```

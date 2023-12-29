@@ -1,0 +1,30 @@
+## 前置代理端口(clash),也可以选择宿主机下的clash作为前置代理,前提是打开Allow LAN(允许来自局域网的连接)选项
+# Socks5Proxy 127.0.0.1:7891
+HTTPSProxy 127.0.0.1:7890  # 二选一
+
+## 如果您打算仅运行Tor,请设置"SocksPort 0"作为中继,而不是自己建立任何本地应用程序连接
+## 外部程序访问Tor的端口,可以多次指定该指令以绑定到多个地址/端口
+SocksPort 9050
+SocksPort 127.0.0.1:9100
+
+## 控制器应用程序(如stem)访问的端口
+ControlPort 9051
+
+## 链路有效时间,单位秒,超时会換一次identity(tor自身限制最少10s)
+MaxCircuitDirtiness 20
+
+## 根据IP地址允许/拒绝SOCKS请求的条目策略,第一个匹配的条目获胜
+#SocksPolicy accept 192.168.0.0/16
+#SocksPolicy reject *
+
+## 保存所有级别为notice或更高级别的消息
+#Log notice file /var/log/tor/notices.log
+## 保存所有可能的消息
+#Log debug file /var/log/tor/debug.log
+## Use the system log instead of Tor's logfiles
+#Log notice syslog
+## To send all messages to stderr:
+#Log debug stderr
+
+## 命令行可以使用--runasdaemon 1实现配置效果
+#RunAsDaemon 1
