@@ -50,13 +50,13 @@ COPY cnf/nginx/nginx.conf /etc/nginx/nginx.conf
 # wget https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.deb -O clash.deb
 COPY app/clash-1.3.8.deb clash.deb
 RUN dpkg -i clash.deb;\
-    rm -f clash.deb;\
+    rm -rf clash.deb;\
     mkdir /etc/clash
 # wget https://github.com/aiboboxx/clashfree/raw/main/clash.yml
 COPY cnf/clash/clash.yaml /etc/clash/clash.yaml
 # 下载最新配置文件,应为可能无法访问报错导致RUN失败,所以用"|| :"使命令总是成功
 RUN git clone https://github.com/aiboboxx/clashfree.git && mv clashfree/clash.yml /etc/clash/clash.yaml || :;\
-    rm -f clashfree
+    rm -rf clashfree
 
 ### 启动服务 ###
 COPY cnf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
