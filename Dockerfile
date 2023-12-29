@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV ROOTPATH=/root
 WORKDIR $ROOTPATH
 RUN apt update;\
+    apt -f install;\
     apt install -y iputils-ping vim git curl make gcc supervisor nginx;\
     rm -rf /var/lib/apt/lists/*
 RUN ["/bin/bash", "-c", "mkdir -p data/{redis_cluster/{7000,7001,7002,7003,7004,7005},redis}"]
@@ -44,6 +45,16 @@ RUN sed 's/PORT_NUMBER/7000/g' $ROOTPATH/redis_cluster/redis.conf >> $ROOTPATH/r
 ### 配置nginx ###
 RUN openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/nginx/nginx.key -out /etc/nginx/nginx.crt -subj "/CN=my-nginx/O=my-nginx"
 COPY cnf/nginx/nginx.conf /etc/nginx/nginx.conf
+
+### 安装clash ###
+# wget https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.deb -O clash.deb
+COPY app/clash-1.3.8.deb clash.deb
+RUN dpkg -i clash.deb;\
+    rm -f clash.deb;\
+    mkdir /etc/clash;\
+
+
+
 
 ### 启动服务 ###
 COPY cnf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf

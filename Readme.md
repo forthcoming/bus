@@ -10,6 +10,7 @@
 * `miniconda`
 * `git`
 * `supervisor`
+* `clash`
 
 ### 所需环境
 
