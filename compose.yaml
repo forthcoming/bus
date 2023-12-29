@@ -20,7 +20,8 @@ services:
       - "7005:7005"
       - "6379:6379"   # redis
       - "80:80"
-      - "3456:7890"  # clash
+      - "7890:7890"  # clash
+      - "9050:9050"  # tor
       - "8118:8118"  # privoxy
     networks:
       - bus_net

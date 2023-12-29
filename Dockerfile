@@ -57,6 +57,8 @@ COPY cnf/clash/clash.yaml /etc/clash/clash.yaml
 # 下载最新配置文件,应为可能无法访问报错导致RUN失败,所以用"|| :"使命令总是成功
 RUN git clone https://github.com/aiboboxx/clashfree.git && mv clashfree/clash.yml /etc/clash/clash.yaml || :;\
     rm -rf clashfree
+# wget https://cdn.jsdelivr.net/gh/Dreamacro/maxmind-geoip@release/Country.mmdb -O Country.mmdb
+COPY app/Country.mmdb $ROOTPATH/.config/clash/Country.mmdb
 
 ### 配置tor+privoxy ###
 COPY cnf/tor/torrc /etc/tor/torrc
