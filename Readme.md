@@ -29,10 +29,20 @@ docker compose up -d  # compose.yaml目录下执行
 
 ```shell
 mongo -uroot -proot  # mongodb://root:root@localhost:27017 
+```
+
+```shell
 redis-cli
+```
+
+```shell
 redis-cli -c -p 7000
+```
+
+```shell
 mysql -h127.0.0.1 -uroot -proot
 ```
+
 ```python
 # 浏览器设置好代理即可访问外网
 # clash: 7890是https代理,7891是http代理
