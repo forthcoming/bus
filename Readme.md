@@ -1,6 +1,4 @@
-## 功能
-
-**一键部署如下应用:**
+## 功能点
 
 * **mongo单节点**
 * **redis单节点**
@@ -67,6 +65,6 @@ r = requests.get('https://httpbin.org/ip', proxies={"http": "socks5://127.0.0.1:
 print(r.text)
 
 # 测试privoxy
-r = requests.get('https://check.torproject.org/?lang=zh_CN', proxies={"https": "127.0.0.1:8118"})
+r = requests.get('https://check.torproject.org', proxies={"https": "127.0.0.1:8118"})
 print(r.text)
 ```
