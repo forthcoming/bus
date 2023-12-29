@@ -25,7 +25,7 @@ curl -fsSL https://get.docker.com | sh # 安装docker
 docker compose up -d  # compose.yaml目录下执行
 ```
 
-### 测试命令
+### 测试
 
 ```shell
 mongo -uroot -proot  # mongodb://root:root@localhost:27017 
