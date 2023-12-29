@@ -1,4 +1,4 @@
-### 功能
+## 功能
 
 **一键部署如下应用:**
 
@@ -13,19 +13,19 @@
 * **clash**
 * **tor**
 
-### 环境准备
+## 环境准备
 
 ```shell
 curl -fsSL https://get.docker.com | sh # 安装docker
 ```
 
-### 启动
+## 启动
 
 ```shell
 docker compose up -d  # compose.yaml目录下执行
 ```
 
-### 测试
+## 测试
 
 ```shell
 mongo -uroot -proot  # mongodb://root:root@localhost:27017 
