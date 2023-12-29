@@ -21,7 +21,7 @@ services:
       - "6379:6379"   # redis
       - "80:80"
       - "3456:7890"  # clash
-      - "9050:9050"  # tor
+      - "8118:8118"  # privoxy
     networks:
       - bus_net
 #    depends_on: # 只能保证容器启动和销毁顺序,不能确保依赖的容器是否ready

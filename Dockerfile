@@ -5,7 +5,7 @@ ENV ROOTPATH=/root
 WORKDIR $ROOTPATH
 RUN apt update;\
     apt -f install;\
-    apt install -y iputils-ping vim git curl make gcc supervisor nginx tor;\
+    apt install -y iputils-ping net-tools vim git curl make gcc supervisor nginx tor privoxy;\
     rm -rf /var/lib/apt/lists/*
 RUN ["/bin/bash", "-c", "mkdir -p data/{redis_cluster/{7000,7001,7002,7003,7004,7005},redis}"]
 
@@ -58,8 +58,9 @@ COPY cnf/clash/clash.yaml /etc/clash/clash.yaml
 RUN git clone https://github.com/aiboboxx/clashfree.git && mv clashfree/clash.yml /etc/clash/clash.yaml || :;\
     rm -rf clashfree
 
-### 配置tor ###
+### 配置tor+privoxy ###
 COPY cnf/tor/torrc /etc/tor/torrc
+COPY cnf/privoxy/config /etc/privoxy/config
 
 ### 启动服务 ###
 COPY cnf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
