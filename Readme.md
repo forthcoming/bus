@@ -8,7 +8,6 @@
 * **mysql单节点**
 * **nginx**
 * **miniconda**
-* **git**
 * **supervisor**
 * **clash**
 * **tor**
