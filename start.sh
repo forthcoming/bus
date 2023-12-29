@@ -2,7 +2,7 @@ set -x
 supervisord -c /etc/supervisor/supervisord.conf
 while true
 do
-    sleep .5  # 保证supervisord启动完成
+    sleep .5
     process_num=$(supervisorctl status rc: | grep -c RUNNING)
     if [ "$process_num" != 6 ]
     then

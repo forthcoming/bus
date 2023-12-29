@@ -11,6 +11,7 @@ services:
       - ./data/redis_cluster/7004:/root/data/redis_cluster/7004
       - ./data/redis_cluster/7005:/root/data/redis_cluster/7005
       - ./data/redis:/root/data/redis
+      - ./log/supervisor:/var/log/supervisor
     ports:
       - "7000:7000"  # HOST:CONTAINER应始终指定为带引号的字符串,以避免与yaml base-60 float发生冲突
       - "7001:7001"
@@ -45,6 +46,7 @@ services:
     volumes:
       - ./data/mongo:/data/db
       - ./cnf/mongo:/etc/mongo
+      - ./log/mongo:/var/log/mongodb
     ports:
       - "27017:27017"
     environment:

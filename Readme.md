@@ -38,14 +38,14 @@ mysql -h127.0.0.1 -uroot -proot
 # clash: 7890是https代理,7891是http代理
 # tor: 9050是socks5代理,shadowsocks也是socks5代理
 # privoxy: 8118是https代理
-# export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7891;  # 终端使用代理(或添加到~/.bashrc)
+# export https_proxy=http://127.0.0.1:7890;export http_proxy=http://127.0.0.1:7891; # 终端使用代理(或添加到~/.bashrc)
 
 # socks5代理性能优于http(s)代理,有些应用只支持https,或者访问被墙的网站,需要将https代理转换成socks5代理给tor使用
 # clash作为tor的后置代理,用于翻墙,privoxy作为tor的前置代理,将https代理转换为socks5代理
 
 # privoxy主要配置如下:
-# listen-address  0.0.0.0:8118  # 同一局域网下的其他设备都能访问privoxy代理,127.0.0.1意思是只有本地应用才能使用该代理
-# forward-socks5t   /   127.0.0.1:9050 .    # 将tor的socks代理转换成https代理
+# listen-address 0.0.0.0:8118 # 0.0.0.0意思是同一局域网下的其他设备都能使用该代理
+# forward-socks5t / 127.0.0.1:9050 . # 将https代理转换成tor的socks5代理
 
 import requests
 
