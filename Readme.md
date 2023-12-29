@@ -2,18 +2,18 @@
 
 **一键部署如下应用:**
 
-* `mongo单节点`
-* `redis单节点`
-* `redis集群`
-* `mysql单节点`
-* `nginx`
-* `miniconda`
-* `git`
-* `supervisor`
-* `clash`
-* `tor`
+* **mongo单节点**
+* **redis单节点**
+* **redis集群**
+* **mysql单节点**
+* **nginx**
+* **miniconda**
+* **git**
+* **supervisor**
+* **clash**
+* **tor**
 
-### 所需环境
+### 环境准备
 
 ```shell
 curl -fsSL https://get.docker.com | sh # 安装docker
