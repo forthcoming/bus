@@ -48,7 +48,7 @@ COPY cnf/nginx/nginx.conf /etc/nginx/nginx.conf
 
 ### 安装clash ###
 # wget https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.deb -O clash.deb
-COPY app/clash-1.3.8.deb clash.deb
+COPY addition/clash-1.3.8.deb clash.deb
 RUN dpkg -i clash.deb;\
     rm -rf clash.deb;\
     mkdir /etc/clash
@@ -58,7 +58,7 @@ COPY cnf/clash/clash.yaml /etc/clash/clash.yaml
 RUN git clone https://github.com/aiboboxx/clashfree.git && mv clashfree/clash.yml /etc/clash/clash.yaml || :;\
     rm -rf clashfree
 # wget https://cdn.jsdelivr.net/gh/Dreamacro/maxmind-geoip@release/Country.mmdb -O Country.mmdb
-COPY app/Country.mmdb $ROOTPATH/.config/clash/Country.mmdb
+COPY addition/Country.mmdb $ROOTPATH/.config/clash/Country.mmdb
 
 ### 配置tor+privoxy ###
 COPY cnf/tor/torrc /etc/tor/torrc
