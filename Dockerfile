@@ -51,10 +51,12 @@ COPY cnf/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY app/clash-1.3.8.deb clash.deb
 RUN dpkg -i clash.deb;\
     rm -f clash.deb;\
-    mkdir /etc/clash;\
-
-
-
+    mkdir /etc/clash
+# wget https://github.com/aiboboxx/clashfree/raw/main/clash.yml
+COPY cnf/clash/clash.yaml /etc/clash/clash.yaml
+RUN git clone https://github.com/aiboboxx/clashfree.git;\
+    mv clashfree/clash.yml /etc/clash/clash.yaml;\
+    rm -f clashfree
 
 ### 启动服务 ###
 COPY cnf/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
