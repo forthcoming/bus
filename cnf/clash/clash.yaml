@@ -47,7 +47,6 @@ proxies:
   - {name: 🇺🇦 乌克兰  1, server: 91.242.229.69, port: 2086, type: vmess, uuid: 88c216b8-56c6-4f34-bcfd-e198ce11f7d6, alterId: 0, cipher: auto, tls: false, skip-cert-verify: false, network: ws, ws-opts: {path: /vmess, headers: {Host: nl1.xv2ray.net}}, udp: true}
   - {name: 🇫🇷 法国巴黎Online S.A.S 2, server: 51.158.146.102, port: 7001, type: ss, cipher: aes-256-gcm, password: RexnBgU7EV5ADxG, udp: true}
   - {name: 🇺🇦 乌克兰  3, server: 91.242.229.77, port: 80, type: vmess, uuid: 56890326-df58-432d-be1e-67064e2b4355, alterId: 0, cipher: auto, tls: false, skip-cert-verify: false, network: ws, ws-opts: {path: /, headers: {Host: nl2.xv2ray.net}}, udp: true}
-  - {name: 🇬🇧 英国伦敦Amazon数据中心 4, server: series-a2-me.samanehha.co, port: 443, type: ss, cipher: chacha20-poly1305, password: Bog0ELmMM9DSxDdQ, udp: true}
   - {name: 🇮🇷 伊朗  5, server: 81.12.27.4, port: 20554, type: vmess, uuid: 5d0b61a0-64fc-4a9f-e4bc-50ecdbc37623, alterId: 0, cipher: auto, tls: false, skip-cert-verify: false, udp: true}
   - {name: 🇮🇳 印度  6, server: hanoi4.speed4g.click, port: 80, type: vmess, uuid: b379fd8e-75c6-4bd6-8a5b-88f3e64bb3fa, alterId: 0, cipher: auto, tls: false, skip-cert-verify: false, network: ws, ws-opts: {path: /speed4g.click, headers: {Host: dl.kgvn.garenanow.com}}, udp: true}
   - {name: 🇺🇸 美国CloudFlare公司CDN节点 7, server: 104.17.2.183, port: 80, type: vmess, uuid: f256a3ae-0f85-4a1d-d0cd-2d0b4b73f4f1, alterId: 0, cipher: auto, tls: false, skip-cert-verify: false, network: ws, ws-opts: {path: /, headers: {Host: v3ra3do.wakeuptimerap.shop}}, udp: true}
@@ -105,7 +104,6 @@ proxy-groups:
       - 🇺🇦 乌克兰  1
       - 🇫🇷 法国巴黎Online S.A.S 2
       - 🇺🇦 乌克兰  3
-      - 🇬🇧 英国伦敦Amazon数据中心 4
       - 🇮🇷 伊朗  5
       - 🇮🇳 印度  6
       - 🇺🇸 美国CloudFlare公司CDN节点 7
@@ -162,7 +160,6 @@ proxy-groups:
       - 🇺🇦 乌克兰  1
       - 🇫🇷 法国巴黎Online S.A.S 2
       - 🇺🇦 乌克兰  3
-      - 🇬🇧 英国伦敦Amazon数据中心 4
       - 🇮🇷 伊朗  5
       - 🇮🇳 印度  6
       - 🇺🇸 美国CloudFlare公司CDN节点 7
@@ -220,7 +217,6 @@ proxy-groups:
       - 🇺🇦 乌克兰  1
       - 🇫🇷 法国巴黎Online S.A.S 2
       - 🇺🇦 乌克兰  3
-      - 🇬🇧 英国伦敦Amazon数据中心 4
       - 🇮🇷 伊朗  5
       - 🇮🇳 印度  6
       - 🇺🇸 美国CloudFlare公司CDN节点 7
@@ -290,7 +286,6 @@ proxy-groups:
       - 🇺🇦 乌克兰  1
       - 🇫🇷 法国巴黎Online S.A.S 2
       - 🇺🇦 乌克兰  3
-      - 🇬🇧 英国伦敦Amazon数据中心 4
       - 🇮🇷 伊朗  5
       - 🇮🇳 印度  6
       - 🇺🇸 美国CloudFlare公司CDN节点 7
@@ -353,7 +348,6 @@ proxy-groups:
       - 🇺🇦 乌克兰  1
       - 🇫🇷 法国巴黎Online S.A.S 2
       - 🇺🇦 乌克兰  3
-      - 🇬🇧 英国伦敦Amazon数据中心 4
       - 🇮🇷 伊朗  5
       - 🇮🇳 印度  6
       - 🇺🇸 美国CloudFlare公司CDN节点 7
@@ -410,7 +404,6 @@ proxy-groups:
       - 🇺🇦 乌克兰  1
       - 🇫🇷 法国巴黎Online S.A.S 2
       - 🇺🇦 乌克兰  3
-      - 🇬🇧 英国伦敦Amazon数据中心 4
       - 🇮🇷 伊朗  5
       - 🇮🇳 印度  6
       - 🇺🇸 美国CloudFlare公司CDN节点 7
@@ -468,7 +461,6 @@ proxy-groups:
       - 🇺🇦 乌克兰  1
       - 🇫🇷 法国巴黎Online S.A.S 2
       - 🇺🇦 乌克兰  3
-      - 🇬🇧 英国伦敦Amazon数据中心 4
       - 🇮🇷 伊朗  5
       - 🇮🇳 印度  6
       - 🇺🇸 美国CloudFlare公司CDN节点 7
@@ -535,7 +527,6 @@ proxy-groups:
       - 🇺🇦 乌克兰  1
       - 🇫🇷 法国巴黎Online S.A.S 2
       - 🇺🇦 乌克兰  3
-      - 🇬🇧 英国伦敦Amazon数据中心 4
       - 🇮🇷 伊朗  5
       - 🇮🇳 印度  6
       - 🇺🇸 美国CloudFlare公司CDN节点 7
